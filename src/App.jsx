@@ -16,10 +16,11 @@ const App = () => {
     [3, 4, 5, 2, 8, 6, 1, 7, 9],
   ];
   const [grid, setGrid] = useState(sudokuSolution);
-  const [isValid, setValid] = useState(false);
+  const [isValid, setValid] = useState(true);
+  const [validInput,setValidInput] = useState(false)
 
   const handleChange = (row, col, value) => {
-    setValid(isValidMove(grid,row,col,value))
+    setValid(isValidMove(grid,row,col,value,setValidInput))
     setGrid((prevGrid) => {
       const newGrid = [...prevGrid];
       newGrid[row][col] = value;
@@ -34,11 +35,8 @@ const App = () => {
       </h1>
       {isValidSudoku(grid.flat(2)) ? <h1 className="valid">Valid  Sudoko Board</h1> : <h1 className="invalid">Invalid Sudoko Board</h1> }
         {isValid ? <h1 className="valid">Valid Move</h1> : <h1 className="invalid">Invalid Move</h1> }
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-        className="max-w-fit mx-auto mt-4"
+      <div
+        className="max-w-fit mx-auto mt-4 relative"
       >
         <div className="grid grid-cols-3 gap-2">
           {grid.map((row, rowIndex) => (
@@ -56,7 +54,12 @@ const App = () => {
             </div>
           ))}
         </div>
-      </form>
+        {validInput && <div className="absolute top-1 left-16 bg-red-400 rounded font-medium border-2 border-red-700">
+          <button onClick={()=>setValidInput(false)} className="px-2 ms-auto text-2xl block cursor-pointer">x</button>
+          <h4 className="px-20 text-xl pb-5 text-center">Invalid Input <br /> Enter Input 1 - 9</h4>
+        </div>}
+
+      </div>
       <div className="mt-5 bg-white p-5 max-w-fit mx-auto flex items-center">
         <div className="w-10 h-10 border-4 border-red-600"></div>
         <div className="h-1 w-4 bg-black mx-5"></div>

@@ -13,3 +13,9 @@
 .invalid{
   @apply text-2xl mt-10 text-center font-bold text-red-600
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -19,7 +19,7 @@ const RenderCell = ({
         className={`${
           value ? "bg-blue-500" : "bg-white"
         } rounded-sm border-[3px] font-medium border-gray-300 ps-3 w-[40px] h-[40px] outline-none focus:ring-2 ${
-          value >= 1 && value <= 9 ? "" : "border-red-500 text-red-500"
+          value >= 1 && value <= 9 ? "" : "border-red-500 bg-white text-red-500"
         }`}
         onPaste={(e)=>{
           e.preventDefault()

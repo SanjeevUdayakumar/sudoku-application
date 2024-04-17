@@ -1,6 +1,9 @@
-export function isValidMove(grid, row, col, num) {
+export function isValidMove(grid, row, col, num, setValidInput) {
     const gridLength = 9; 
-  
+    num>=1 && num<=9 || num == '' ? setValidInput(false) : setValidInput(true)
+    if(num<1 || num>9){
+      return false
+    }
     // Check if number is already in row
     let rowString = "";
     for (let j = 1; j <= gridLength; j++) {
