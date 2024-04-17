@@ -19,8 +19,6 @@ const App = () => {
   const [isValid, setValid] = useState(false);
 
   const handleChange = (row, col, value) => {
-    console.log(isValidMove(grid,row,col,value));
-
     setValid(isValidMove(grid,row,col,value))
     setGrid((prevGrid) => {
       const newGrid = [...prevGrid];
@@ -34,7 +32,7 @@ const App = () => {
       <h1 className="text-center text-2xl font-semibold p-5 text-white">
         Suduko app
       </h1>
-      {isValidSudoku(grid.flat(2)) ? <h1 className="valid">Valid</h1> : <h1 className="invalid">Invalid</h1> }
+      {isValidSudoku(grid.flat(2)) ? <h1 className="valid">Valid  Sudoko Board</h1> : <h1 className="invalid">Invalid Sudoko Board</h1> }
         {isValid ? <h1 className="valid">Valid Move</h1> : <h1 className="invalid">Invalid Move</h1> }
       <form
         onSubmit={(e) => {
