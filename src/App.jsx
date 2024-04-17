@@ -17,7 +17,7 @@ const App = () => {
   ];
   const [grid, setGrid] = useState(sudokuSolution);
   const [isValid, setValid] = useState(true);
-  const [validInput,setValidInput] = useState(false)
+  const [isValidInput,setValidInput] = useState(false)
 
   const handleChange = (row, col, value) => {
     setValid(isValidMove(grid,row,col,value,setValidInput))
@@ -54,7 +54,7 @@ const App = () => {
             </div>
           ))}
         </div>
-        {validInput && <div className="absolute top-1 left-16 bg-red-400 rounded font-medium border-2 border-red-700">
+        {isValidInput && <div className="absolute top-1 left-16 bg-red-400 rounded font-medium border-2 border-red-700">
           <button onClick={()=>setValidInput(false)} className="px-2 ms-auto text-2xl block cursor-pointer">x</button>
           <h4 className="px-20 text-xl pb-5 text-center">Invalid Input <br /> Enter Input 1 - 9</h4>
         </div>}
