@@ -5,3 +5,11 @@
 .form-input{
   @apply  outline-none w-10 h-10 border px-5 
 }
+
+.valid{
+  @apply text-2xl mt-10 text-center font-bold text-green-600
+}
+
+.invalid{
+  @apply text-2xl mt-10 text-center font-bold text-red-600
+}

@@ -27,6 +27,7 @@ const App = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const handleChange = (row, col, value) => {
+    console.log(row);
     setGrid((prevGrid) => {
       const newGrid = [...prevGrid];
       newGrid[row][col] = value;

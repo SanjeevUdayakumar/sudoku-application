@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import RenderCell from "./components/RenderCell";
 import { isValidSudoku } from "./logic";
+import { isValidMove } from "./validMove";
 
 const App = () => {
   const sudokuSolution = [
@@ -16,17 +16,12 @@ const App = () => {
     [3, 4, 5, 2, 8, 6, 1, 7, 9],
   ];
   const [grid, setGrid] = useState(sudokuSolution);
-
-  
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [isValid, setValid] = useState(false);
 
   const handleChange = (row, col, value) => {
-    console.log(row, col, value);
+    console.log(isValidMove(grid,row,col,value));
+
+    setValid(isValidMove(grid,row,col,value))
     setGrid((prevGrid) => {
       const newGrid = [...prevGrid];
       newGrid[row][col] = value;
@@ -34,18 +29,18 @@ const App = () => {
     });
   };
 
-  const onSubmit = (data) => {
-    // Sudoku validation logic
-    const isValid = isValidSudoku(data.grid.flat(2))
-    console.log(isValid);
-  };
-
   return (
     <>
-      <h1 className="text-center text-2xl font-semibold p-5 text-white">Suduko app</h1>
+      <h1 className="text-center text-2xl font-semibold p-5 text-white">
+        Suduko app
+      </h1>
+      {isValidSudoku(grid.flat(2)) ? <h1 className="valid">Valid</h1> : <h1 className="invalid">Invalid</h1> }
+        {isValid ? <h1 className="valid">Valid Move</h1> : <h1 className="invalid">Invalid Move</h1> }
       <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="max-w-4xl mx-auto mt-16"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className="max-w-fit mx-auto mt-4"
       >
         <div className="grid grid-cols-3 gap-2">
           {grid.map((row, rowIndex) => (
@@ -53,25 +48,22 @@ const App = () => {
               {row.map((cell, colIndex) => (
                 <RenderCell
                   grid={grid}
-                  register={register(`grid[${rowIndex}][${colIndex}]`)}
                   name={`${rowIndex}-${colIndex}`}
                   key={colIndex}
                   row={rowIndex}
                   col={colIndex}
-                  errors={errors}
                   handleChange={handleChange}
                 />
               ))}
             </div>
           ))}
         </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-blue-700"
-        >
-          Validate
-        </button>
       </form>
+      <div className="mt-5 bg-white p-5 max-w-fit mx-auto flex items-center">
+        <div className="w-10 h-10 border-4 border-red-600"></div>
+        <div className="h-1 w-4 bg-black mx-5"></div>
+        <div className="text-lg font-medium">InValid input and enter value 1 - 9</div>
+      </div>
     </>
   );
 };
