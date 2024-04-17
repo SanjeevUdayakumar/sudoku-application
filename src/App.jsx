@@ -35,7 +35,6 @@ const App = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data.grid.flat(2)); // Access form data (grid values) for validation or processing
     // Sudoku validation logic
     const isValid = isValidSudoku(data.grid.flat(2))
     console.log(isValid);
