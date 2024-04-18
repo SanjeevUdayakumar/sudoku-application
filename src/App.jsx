@@ -54,9 +54,10 @@ const App = () => {
             </div>
           ))}
         </div>
-        {isValidInput && <div className="absolute top-1 left-16 bg-red-400 rounded font-medium border-2 border-red-700">
-          <button onClick={()=>setValidInput(false)} className="px-2 ms-auto text-2xl block cursor-pointer">x</button>
-          <h4 className="px-20 text-xl pb-5 text-center">Invalid Input <br /> Enter Input 1 - 9</h4>
+        {isValidInput && <div className="absolute text-center top-1 left-16 bg-white p-5 rounded-xl font-medium border-2 border-red-700">
+          <h4 className="px-20 text-xl pb-2 text-center text-red-500 font-semibold">Invalid Input</h4>
+          <p className="text-gray-500 text-sm"> Enter Input 1 - 9</p>
+          <button onClick={()=>setValidInput(false)} className="px-2 ms-auto text-lg bg-red-400 hover:bg-red-500 rounded-md text-white block mx-auto mt-5 cursor-pointer">Ok</button>
         </div>}
 
       </div>

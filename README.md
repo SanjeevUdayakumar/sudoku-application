@@ -1,8 +1,22 @@
-# React + Vite
+# Sudoko App
+ Simple sudoko app to solve the suduko pattern of 9x9 grid.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ ## Screenshots
+ - **ScreenShot 1**
+ ![sudoku app](./src/assets/screenshots/Screenshot1.png)
+ - **ScreenShot 2**
+ ![sudoku app](./src/assets/screenshots/Screenshot2.png)
+  - **ScreenShot 3**
+ ![sudoku app](./src/assets/screenshots/Screenshot3.png)
+  - **ScreenShot 4**
+ ![sudoku app](./src/assets/screenshots/Screenshot4.png)
 
-Currently, two official plugins are available:
+ ## Technology Used
+ - HTML
+ - Tailwindcss
+ - React Js
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ ## Features
+- Check whether the move is valid or not
+- Check whether the grid pattern of sudoku board is valid or not
+
